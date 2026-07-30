@@ -1,12 +1,12 @@
 # ♟️ Chessalytics
 
-**Chessalytics** is an interactive data analytics dashboard built with **Streamlit** that explores over **20,000 chess games** from the Lichess dataset. It provides insightful visualizations, statistical analysis, feature engineering, and an AI-powered chatbot to help users understand chess trends, openings, and gameplay patterns.
+Chessalytics is an interactive data analytics dashboard built with **Streamlit** that explores over **20,000 chess games** from the Lichess dataset. The dashboard provides interactive visualizations, statistical insights, and an AI-powered chatbot to help users analyze chess openings, player ratings, game outcomes, and gameplay trends.
 
 ---
 
 ## 🚀 Features
 
-### 🏠 Home Dashboard
+### 🏠 Dashboard
 - Dataset overview
 - Key performance metrics
 - Rating tier distribution
@@ -16,79 +16,62 @@
 - Dataset preview
 - Summary statistics
 - Top-performing chess openings
-- Popular opening analysis
+- Opening popularity analysis
 
 ### 📈 Interactive Visualizations
-- Overall game outcomes
+- Game outcome distribution
 - Opening popularity
 - Success rates by rating tier
-- Opening vs game outcome
+- Opening vs. game outcome
 - White advantage analysis
 - Time control analysis
-- Rating vs opening depth
-- Move count distributions
-- Time vs number of moves
+- Rating vs. opening depth
+- Move count distribution
+- Game duration vs. number of moves
 
 ### 💡 Key Insights
-Actionable insights generated from the analysis including:
+The dashboard highlights important chess trends, including:
 - White first-move advantage
-- Impact of time controls
-- Opening preferences by skill level
-- Strategic recommendations for beginners, intermediate and advanced players
+- Impact of different time controls
+- Opening preferences across rating levels
+- Strategic recommendations for beginners, intermediate, and advanced players
 
-### 🧹 Data Cleaning
-Displays:
-- Dataset information
-- Cleaning process
-- Feature engineering steps
-- Sample cleaned dataset
+### 🧹 Data Cleaning & Feature Engineering
+The application demonstrates the complete preprocessing workflow by:
+- Removing missing and duplicate records
+- Cleaning unrealistic game durations
+- Extracting base opening names
+- Calculating average player ratings
+- Creating rating tiers
+- Categorizing games into Bullet, Blitz, Rapid, and Classical formats
+- Generating additional analytical features for visualization
 
-### 🤖 Chess Chatbot
-Integrated AI chatbot powered by **OpenRouter API** that can answer:
-- Chess-related questions
-- Opening explanations
-- Strategy suggestions
-- General chess concepts
+### 🤖 AI Chess Chatbot
+An integrated chatbot powered by the OpenRouter API allows users to ask questions about:
+- Chess openings
+- Game strategies
+- Chess concepts
+- Gameplay trends within the dataset
 
 ---
 
-# 📂 Dataset
+## 📂 Dataset
 
-- **Source:** Kaggle (Lichess Chess Games Dataset)
-- **Games:** 20,058
-- **Time Period:** 2016–2017
+**Source:** Kaggle – Lichess Chess Games Dataset
 
-Dataset contains information such as:
+The dataset contains over **20,000 chess games** played on Lichess between **2016 and 2017**, including:
+
 - Player ratings
-- Winner
-- Opening played
-- Number of turns
+- Game outcomes
+- Opening names
+- Number of moves
 - Time controls
 - Victory status
-- Rated/Casual games
+- Rated and casual games
 
 ---
 
-# ⚙️ Data Processing
-
-The dataset undergoes several preprocessing steps:
-
-- Removed missing values
-- Removed duplicate records
-- Removed unrealistic game durations
-- Extracted base opening names
-- Calculated average player rating
-- Categorized players into rating tiers
-- Classified games into:
-  - Bullet
-  - Blitz
-  - Rapid
-  - Classical
-- Created additional analytical features for visualization
-
----
-
-# 🛠️ Technologies Used
+## 🛠️ Technologies Used
 
 - Python
 - Streamlit
@@ -100,55 +83,7 @@ The dataset undergoes several preprocessing steps:
 
 ---
 
-# 📦 Installation
-
-Clone the repository
-
-```bash
-git clone https://github.com/yourusername/chessalytics.git
-```
-
-Move into the project
-
-```bash
-cd chessalytics
-```
-
-Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-# 🔑 API Setup
-
-Create a file:
-
-```
-.streamlit/secrets.toml
-```
-
-Add your OpenRouter API key
-
-```toml
-OPENROUTER_API_KEY="your_api_key_here"
-```
-
-**Do NOT commit this file to GitHub.**
-
----
-
-# ▶️ Run the App
-
-```bash
-streamlit run chess1.py
-```
-
----
-
-# 📁 Project Structure
+## 📁 Project Structure
 
 ```
 Chessalytics/
@@ -156,41 +91,41 @@ Chessalytics/
 ├── chess1.py
 ├── games.csv
 ├── requirements.txt
-├── .gitignore
 ├── README.md
 └── .streamlit/
-    └── secrets.toml (local only)
 ```
 
 ---
 
-# 📊 Sample Visualizations
+## 📊 Dashboard Preview
 
 The dashboard includes interactive visualizations such as:
 
 - Game Outcome Distribution
 - Rating Tier Distribution
-- Opening Popularity Heatmap
+- Opening Popularity
 - Success Rate Analysis
 - White Advantage Analysis
-- Time Control Distribution
-- Move Duration Correlation
-- Opening Performance
+- Time Control Analysis
+- Move Count Distribution
+- Opening Performance Comparison
+
+*(Add screenshots here after uploading them to your repository.)*
 
 ---
 
-# 🎯 Future Improvements
+## 🎯 Future Improvements
 
 - PGN upload and automatic game analysis
 - Stockfish engine integration
-- Player vs Player comparison
+- Player vs. Player comparison
 - Opening recommendation system
 - Move quality analysis
 - AI-generated game reports
 
 ---
 
-# 🙌 Acknowledgements
+## 🙌 Acknowledgements
 
 - Lichess
 - Kaggle
@@ -200,6 +135,6 @@ The dashboard includes interactive visualizations such as:
 
 ---
 
-# 📄 License
+## 📄 License
 
-This project is intended for educational and learning purposes.
+This project was developed for educational and learning purposes.
