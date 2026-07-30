@@ -9,9 +9,7 @@ import streamlit as st
 import json
 import requests
 
-# ═══════════════════════════════════════════════════════════════
-# DATA LOADING (cached for speed)
-# ═══════════════════════════════════════════════════════════════
+
 @st.cache_data
 def load_data():
     df = pd.read_csv("games.csv")
@@ -61,9 +59,6 @@ def load_data():
 
 df = load_data()
 
-# ═══════════════════════════════════════════════════════════════
-# HELPER FUNCTIONS
-# ═══════════════════════════════════════════════════════════════
 def get_top_performing_openings(data_subset, min_games=40):
     """Filters for popular openings and calculates an effective win rate."""
     counts = data_subset['opening_base'].value_counts()
@@ -110,9 +105,6 @@ def get_opening_stats(opening_name, data):
     }
 
 
-# ═══════════════════════════════════════════════════════════════
-# CONSISTENT COLOR MAPS
-# ═══════════════════════════════════════════════════════════════
 FORMAT_COLORS = {
     '1. Bullet (<3m)': '#FF5733',
     '2. Blitz (3-8m)': '#33FF57',
@@ -133,14 +125,8 @@ WINNER_COLORS = {
     'draw': '#7F7F7F',
 }
 
-# ═══════════════════════════════════════════════════════════════
-# PAGE CONFIG
-# ═══════════════════════════════════════════════════════════════
 st.set_page_config(page_title="Chessalytics", page_icon="♔", layout="wide")
 
-# ═══════════════════════════════════════════════════════════════
-# SIDEBAR — navigation + global filters
-# ═══════════════════════════════════════════════════════════════
 with st.sidebar:
     st.title("♛ Chessalytics ♛")
 
@@ -191,9 +177,6 @@ df_filtered = df[
     & df['rated'].isin(filter_rated)
 ].copy()
 
-# ═══════════════════════════════════════════════════════════════
-# 🏠 HOME
-# ═══════════════════════════════════════════════════════════════
 if opt == "🏠 Home":
 
     st.title("♔ Welcome to Chessalytics ♔")
@@ -246,9 +229,6 @@ if opt == "🏠 Home":
     )
     st.subheader("Check out the next page for data overview and analysis.", divider='grey')
 
-# ═══════════════════════════════════════════════════════════════
-# 📊 DATA ANALYSIS
-# ═══════════════════════════════════════════════════════════════
 elif opt == "📊 Data Analysis":
 
     st.title("⌖ Data Overview & Analysis ⌖")
@@ -285,9 +265,6 @@ elif opt == "📊 Data Analysis":
 
     st.subheader("Check out the next page for visualizations.", divider='grey')
 
-# ═══════════════════════════════════════════════════════════════
-# 📈 VISUALIZATIONS
-# ═══════════════════════════════════════════════════════════════
 elif opt == "📈 Visualizations":
 
     st.title("⌖ Visualizations ⌖")
@@ -299,7 +276,6 @@ elif opt == "📈 Visualizations":
         ["Macro Trends", "Opening Analysis", "Dynamic Insights", "Advanced Metrics"]
     )
 
-    # ── TAB 1: Macro Trends ──────────────────────────────────
     with t1:
         st.markdown("#### 👉 Win Rate & Format Volume")
         c1, c2 = st.columns(2)
@@ -327,7 +303,6 @@ elif opt == "📈 Visualizations":
             "Check out the next tab for opening analysis.", divider='grey'
         )
 
-    # ── TAB 2: Opening Analysis ──────────────────────────────
     with t2:
         st.markdown("#### 👉 Opening Popularity & Success Rates")
 
@@ -457,7 +432,6 @@ elif opt == "📈 Visualizations":
             "Check out the next tab for dynamic insights.", divider='grey'
         )
 
-    # ── TAB 3: Dynamic Insights ──────────────────────────────
     with t3:
         st.markdown("#### 👉 Termination & Rating Impact")
 
@@ -498,7 +472,6 @@ elif opt == "📈 Visualizations":
             "Check out the next tab for advanced metrics.", divider='grey'
         )
 
-    # ── TAB 4: Advanced Metrics ──────────────────────────────
     with t4:
         st.markdown("#### 👉 Time & Moves Correlation")
         sample = df_filtered.sample(
@@ -554,9 +527,6 @@ elif opt == "📈 Visualizations":
             divider='grey',
         )
 
-# ═══════════════════════════════════════════════════════════════
-# 🔍 OPENING EXPLORER  (NEW)
-# ═══════════════════════════════════════════════════════════════
 elif opt == "🔍 Opening Explorer":
 
     st.title("🔍 Opening Comparison & Drill-Down Explorer")
@@ -909,9 +879,6 @@ elif opt == "🔍 Opening Explorer":
             fig.update_layout(xaxis_tickangle=-45)
             st.plotly_chart(fig, use_container_width=True)
 
-# ═══════════════════════════════════════════════════════════════
-# 💡 KEY INSIGHTS
-# ═══════════════════════════════════════════════════════════════
 elif opt == "💡 Key Insights":
 
     st.title("⌖ Key Insights & Takeaways ⌖")
@@ -957,9 +924,6 @@ elif opt == "💡 Key Insights":
         "Check out the next page for data cleaning steps.", divider='grey'
     )
 
-# ═══════════════════════════════════════════════════════════════
-# 🧹 DATA CLEANING
-# ═══════════════════════════════════════════════════════════════
 elif opt == "🧹 Data Cleaning":
 
     st.title("🧹 Dataset Information & Cleaning")
@@ -1019,9 +983,6 @@ df['game_format'] = pd.cut(df['base_time_mins'], bins=format_bins, labels=format
     st.subheader("Sample of Cleaned Data")
     st.dataframe(df.head(10), use_container_width=True)
 
-# ═══════════════════════════════════════════════════════════════
-# 🤖 CHAT BOT
-# ═══════════════════════════════════════════════════════════════
 elif opt == "🤖 Chat Bot":
 
     st.title("♟️ Chess Chatbot")
